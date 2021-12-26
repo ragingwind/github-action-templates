@@ -18,4 +18,5 @@ jobs:
           profile: minimal
           override: true
           target: x86_64-apple-darwin
-        run: cargo --version
+      # run cargo
+      -  run: cargo --version
