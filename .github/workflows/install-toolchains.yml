@@ -1,0 +1,21 @@
+# name of workflow
+name: install toolchains
+# trigger, run in manually
+on: [workflow_dispatch]
+
+jobs:
+  #  define job name
+  install-rust:
+    # title of job to display, optional
+    name: Install rust
+    runs-on: ubuntu-latest
+    steps:
+      # checkout target repository
+      - uses: actions/checkout@v2
+      # rust toolchain action
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          override: true
+          target: x86_64-apple-darwin
+        run: cargo --version
