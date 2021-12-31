@@ -1,22 +1,24 @@
 # name of workflow
-name: install toolchains
+name: Install toolchains
 # trigger, run in manually
 on: [workflow_dispatch]
 
 jobs:
   #  define job name
-  install-rust:
-    # title of job to display, optional
-    name: Install rust
+  check-license:
+    name: Check license
     runs-on: ubuntu-latest
     steps:
-      # checkout target repository
       - uses: actions/checkout@v2
-      # rust toolchain action
-      - uses: actions-rs/toolchain@v1
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
         with:
           profile: minimal
-          override: true
-          target: x86_64-apple-darwin
-      # run cargo
-      -  run: cargo --version
+
+      - name: Install required tools
+        run: |
+          cargo install cargo-deny
+      - name: Check licenses
+        run: |
+          cargo deny check
