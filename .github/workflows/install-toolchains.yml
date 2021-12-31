@@ -16,9 +16,5 @@ jobs:
         with:
           profile: minimal
 
-      - name: Install required tools
-        run: |
-          cargo install cargo-deny
-      - name: Check licenses
-        run: |
-          cargo deny check
+      - name: Test version
+        run: cargo version
