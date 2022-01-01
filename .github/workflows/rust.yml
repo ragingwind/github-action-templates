@@ -1,0 +1,13 @@
+name: Rust Toolchains
+on: [workflow_dispatch]
+
+jobs:
+  rust-toolchain:
+    name: Install Toolchains
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
