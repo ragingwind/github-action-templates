@@ -1,7 +1,7 @@
 name: "Replace Tag"
 on:
   push:
-    tags: ["stg"]
+    tags: ["stg*"]
 
 jobs:
   replace-tag:
